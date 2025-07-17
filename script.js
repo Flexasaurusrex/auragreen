@@ -30,59 +30,6 @@ function exitSite() {
     window.location.href = 'https://www.google.com';
 }
 
-function submitWholesaleForm(event) {
-    event.preventDefault();
-    
-    // Get form data
-    const form = event.target;
-    const formData = new FormData(form);
-    
-    // Extract form values
-    const company = formData.get('company') || '';
-    const firstName = formData.get('firstName') || '';
-    const lastName = formData.get('lastName') || '';
-    const email = formData.get('email') || '';
-    const phone = formData.get('phone') || '';
-    const businessType = formData.get('businessType') || '';
-    const monthlyVolume = formData.get('monthlyVolume') || '';
-    const referral = formData.get('referral') || '';
-    const message = formData.get('message') || '';
-    
-    // Create email content
-    const subject = `Wholesale Inquiry - ${company}`;
-    const body = `
-WHOLESALE INQUIRY - AURA GREEN THCa
-
-Company/Business: ${company}
-Contact Person: ${firstName} ${lastName}
-Email: ${email}
-Phone: ${phone}
-Business Type: ${businessType}
-Estimated Monthly Volume: ${monthlyVolume}
-Referral Source: ${referral}
-
-Additional Information:
-${message}
-
----
-Please send detailed wholesale pricing information and details about the referral discount program.
-
-Thank you!
-    `.trim();
-    
-    // Create mailto link
-    const mailtoLink = `mailto:pengusaurusrex@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Show confirmation message
-    alert('Thank you for your wholesale inquiry! Your email client will open with a pre-filled message. Please send the email and we\'ll respond within 24 hours with detailed pricing and referral program information.');
-    
-    // Reset form
-    form.reset();
-}
-
 // Check if user has already verified age when page loads
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded');
