@@ -553,119 +553,296 @@ html, body {
     font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.8rem;
-    }
-    
-    .hero {
-        padding: 4rem 0;
-    }
-    
-    .section {
-        padding: 4rem 0;
-    }
-    
-    .section h2 {
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
+/* Mobile Optimizations */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
     }
     
     .education-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
     }
     
-    .info-card {
-        padding: 2rem;
+    .products-grid-featured {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    /* Enhanced Mobile Layout */
+    html, body {
+        overflow-x: hidden !important;
     }
     
-    .main-logo {
-        width: 600px;
-        height: 600px;
-        max-width: 80vw;
-        max-height: 40vh;
+    .container {
+        padding: 0 1rem;
+        max-width: 100%;
     }
     
-    .minimal-age-verify {
-        gap: 3rem;
-    }
-    
-    .age-buttons {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .btn {
-        padding: 15px 30px;
-        font-size: 1rem;
+    /* Mobile Header */
+    .header {
+        padding: 1rem 0 !important;
     }
     
     .nav-container {
-        flex-direction: column;
-        gap: 1.5rem;
-        padding: 0 2rem;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        padding: 0 1.5rem !important;
     }
     
     .nav-title {
-        font-size: 2rem;
+        font-size: 1.8rem !important;
         text-align: center;
+        letter-spacing: 1px !important;
     }
     
     .header-logo {
-        width: 60px;
-        height: 60px;
+        width: 60px !important;
+        height: 60px !important;
     }
     
+    /* Mobile Hero */
+    .hero {
+        padding: 3rem 0 !important;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem !important;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem !important;
+        padding: 0 1rem;
+        line-height: 1.6;
+    }
+    
+    /* Mobile Sections */
+    .section {
+        padding: 3rem 0 !important;
+    }
+    
+    .section h2 {
+        font-size: 2.2rem !important;
+        margin-bottom: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    /* Mobile Education Cards */
+    .education-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .info-card {
+        padding: 2rem 1.5rem !important;
+        margin: 0 0.5rem;
+        border-radius: 15px;
+    }
+    
+    .info-card h3 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    .info-card p {
+        font-size: 1rem !important;
+        line-height: 1.6;
+    }
+    
+    /* Mobile Oregon Highlight */
+    .oregon-highlight {
+        padding: 2rem 1.5rem !important;
+        margin: 2.5rem 0.5rem !important;
+        border-radius: 20px;
+    }
+    
+    .oregon-highlight h3 {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    .oregon-highlight p {
+        font-size: 1rem !important;
+        line-height: 1.6;
+    }
+    
+    /* Mobile Products */
     .products-grid-featured {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+        margin-top: 2rem;
     }
     
     .product-card-featured {
-        margin: 0 1rem;
+        margin: 0 0.5rem !important;
+        border-radius: 20px;
     }
     
-    .oregon-highlight {
-        padding: 2.5rem;
-        margin: 2.5rem 0;
+    .product-image-real {
+        height: 250px !important;
+        padding: 1.5rem;
+    }
+    
+    .product-info {
+        padding: 1.5rem !important;
+    }
+    
+    .product-info h4 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    .product-info p {
+        font-size: 1rem !important;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+    
+    .price {
+        font-size: 1.8rem !important;
+    }
+    
+    /* Mobile Age Verification */
+    .main-logo {
+        width: 280px !important;
+        height: 280px !important;
+        max-width: 85vw !important;
+        max-height: 35vh !important;
+    }
+    
+    .minimal-age-verify {
+        gap: 2.5rem !important;
+        padding: 0 1rem;
+    }
+    
+    .age-buttons {
+        flex-direction: column !important;
+        gap: 1.2rem !important;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .btn {
+        padding: 18px 25px !important;
+        font-size: 1rem !important;
+        width: 100%;
+        border-radius: 25px;
+        min-height: 50px;
+    }
+    
+    /* Mobile Footer */
+    .footer {
+        padding: 2rem 0 !important;
+    }
+    
+    .footer p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+    }
+    
+    .disclaimer {
+        padding: 1.2rem !important;
+        font-size: 0.85rem !important;
+        line-height: 1.5;
     }
 }
 
 @media (max-width: 480px) {
+    /* Extra Small Mobile Devices */
+    .container {
+        padding: 0 0.8rem;
+    }
+    
+    .nav-title {
+        font-size: 1.5rem !important;
+    }
+    
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 1.8rem !important;
+    }
+    
+    .hero p {
+        font-size: 1rem !important;
     }
     
     .section h2 {
-        font-size: 2rem;
+        font-size: 1.8rem !important;
     }
     
     .main-logo {
-        width: 500px;
-        height: 500px;
-        max-width: 85vw;
-        max-height: 35vh;
+        width: 240px !important;
+        height: 240px !important;
+        max-width: 90vw !important;
+        max-height: 30vh !important;
     }
     
     .minimal-age-verify {
-        gap: 2rem;
-    }
-    
-    .age-buttons {
-        gap: 1rem;
-    }
-    
-    .products-grid-featured {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2rem !important;
     }
     
     .info-card {
-        padding: 1.5rem;
+        padding: 1.5rem 1rem !important;
+        margin: 0 0.2rem;
     }
     
     .oregon-highlight {
-        padding: 2rem;
+        padding: 1.5rem 1rem !important;
+        margin: 2rem 0.2rem !important;
+    }
+    
+    .product-card-featured {
+        margin: 0 0.2rem !important;
+    }
+    
+    .product-info {
+        padding: 1.2rem !important;
+    }
+    
+    .age-buttons {
+        max-width: 280px;
+    }
+    
+    .btn {
+        padding: 15px 20px !important;
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Touch-Friendly Enhancements */
+@media (hover: none) and (pointer: coarse) {
+    /* Mobile touch devices */
+    .btn {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    .product-card-featured:hover {
+        transform: none;
+    }
+    
+    .product-card-featured:active {
+        transform: scale(0.98);
+    }
+    
+    .info-card:hover {
+        transform: none;
+    }
+    
+    .info-card:active {
+        transform: scale(0.98);
+    }
+    
+    /* Reduce sparkle effects for performance */
+    .age-verify-page::before {
+        animation-duration: 6s;
+    }
+    
+    .particle {
+        animation-duration: 20s;
     }
 }
