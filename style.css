@@ -47,17 +47,22 @@ html, body {
     justify-content: center;
     gap: 4rem;
     text-align: center;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .main-logo {
-    width: 600px;
-    height: 600px;
-    max-width: 80vw;
-    max-height: 60vh;
+    width: 800px;
+    height: 800px;
+    max-width: 70vw;
+    max-height: 50vh;
     object-fit: contain;
     display: block;
+    margin: 0 auto;
+    background: #000000;
 }
 
 .age-buttons {
@@ -300,14 +305,14 @@ html, body {
     }
     
     .main-logo {
-        width: 400px;
-        height: 400px;
-        max-width: 90vw;
-        max-height: 50vh;
+        width: 600px;
+        height: 600px;
+        max-width: 80vw;
+        max-height: 40vh;
     }
     
     .minimal-age-verify {
-        gap: 2rem;
+        gap: 3rem;
     }
     
     .age-buttons {
@@ -328,14 +333,14 @@ html, body {
 
 @media (max-width: 480px) {
     .main-logo {
-        width: 300px;
-        height: 300px;
+        width: 500px;
+        height: 500px;
         max-width: 85vw;
-        max-height: 45vh;
+        max-height: 35vh;
     }
     
     .minimal-age-verify {
-        gap: 1.5rem;
+        gap: 2rem;
     }
     
     .age-buttons {
