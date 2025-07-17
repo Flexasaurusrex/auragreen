@@ -146,7 +146,7 @@ html, body {
     object-fit: contain;
     display: block;
     margin: 0 auto;
-    background: transparent;
+    background: transparent !important;
     filter: drop-shadow(0 0 30px rgba(74, 124, 89, 0.3));
 }
 
@@ -358,7 +358,7 @@ html, body {
 
 .hero {
     background: linear-gradient(135deg, rgba(74, 124, 89, 0.1) 0%, rgba(45, 74, 43, 0.05) 100%);
-    padding: 8rem 0;
+    padding: 5rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -513,7 +513,7 @@ html, body {
 
 /* Sections */
 .section {
-    padding: 10rem 0;
+    padding: 5rem 0;
     position: relative;
     scroll-margin-top: 120px;
 }
@@ -532,7 +532,7 @@ html, body {
 .section-title {
     font-size: 4rem;
     font-weight: 700;
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
     text-align: center;
     background: linear-gradient(135deg, #ffffff 0%, #4a7c59 50%, #6b9b73 100%);
     -webkit-background-clip: text;
@@ -548,7 +548,7 @@ html, body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 3rem;
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
     position: relative;
     z-index: 2;
 }
@@ -616,7 +616,7 @@ html, body {
     padding: 5rem;
     border-radius: 30px;
     text-align: center;
-    margin: 6rem 0;
+    margin: 3rem 0;
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(15px);
@@ -662,7 +662,7 @@ html, body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 4rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
     position: relative;
     z-index: 2;
 }
@@ -797,7 +797,7 @@ html, body {
 
 .wholesale-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     position: relative;
     z-index: 2;
 }
@@ -822,7 +822,7 @@ html, body {
 .wholesale-content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+    gap: 3rem;
     align-items: start;
     position: relative;
     z-index: 2;
@@ -831,7 +831,7 @@ html, body {
 .wholesale-info-section {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .wholesale-feature {
@@ -878,7 +878,7 @@ html, body {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .benefit-item {
