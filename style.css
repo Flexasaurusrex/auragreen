@@ -32,114 +32,60 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     z-index: 9999;
 }
 
-.age-verify-page::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cannabis" patternUnits="userSpaceOnUse" width="20" height="20"><path d="M10 2c-1 0-2 1-2 2v2c0 1 1 2 2 2s2-1 2-2V4c0-1-1-2-2-2z" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23cannabis)"/></svg>') repeat;
-    animation: float 20s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-.age-verify-container {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    padding: 3rem;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-    z-index: 1;
-    margin: auto;
-}
-
-.logo-container {
-    margin-bottom: 2rem;
-}
-
-.logo {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin: 0 auto;
-    background: #2d4a2b;
+.minimal-age-verify {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 30px rgba(45, 74, 43, 0.4);
+    gap: 3rem;
 }
 
-.logo img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.age-verify-container h1 {
-    color: #2d4a2b;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-}
-
-.age-verify-container p {
-    color: #666;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
+.main-logo {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
 }
 
 .age-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     justify-content: center;
 }
 
 .btn {
-    padding: 15px 30px;
-    border: none;
+    padding: 20px 40px;
+    border: 2px solid #4a7c59;
     border-radius: 50px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    background: transparent;
 }
 
 .btn-yes {
-    background: linear-gradient(135deg, #4a7c59 0%, #2d4a2b 100%);
+    background: #4a7c59;
     color: white;
 }
 
 .btn-yes:hover {
+    background: #2d4a2b;
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(45, 74, 43, 0.3);
 }
 
 .btn-no {
-    background: #ccc;
-    color: #666;
+    background: transparent;
+    color: #4a7c59;
 }
 
 .btn-no:hover {
-    background: #999;
+    background: #4a7c59;
     color: white;
+    transform: translateY(-2px);
 }
 
 /* Main Page */
@@ -340,12 +286,19 @@ body {
         font-size: 2.5rem;
     }
     
-    .age-verify-container {
-        padding: 2rem;
+    .main-logo {
+        width: 200px;
+        height: 200px;
     }
     
     .age-buttons {
         flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn {
+        padding: 15px 30px;
+        font-size: 1rem;
     }
     
     .nav-container {
