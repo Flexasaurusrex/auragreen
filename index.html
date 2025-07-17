@@ -1,884 +1,195 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: transparent;
-}
-
-html, body {
-    background: #000000 !important;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #2d4a2b;
-}
-
-.page {
-    display: none;
-    min-height: 100vh;
-}
-
-.page.active {
-    display: block !important;
-}
-
-/* Age Verification Page */
-.age-verify-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    width: 100vw;
-    background: #000000 !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    z-index: 9999;
-}
-
-/* Floating Particles */
-.floating-particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.particle {
-    position: absolute;
-    background: radial-gradient(circle, #4a7c59 0%, transparent 70%);
-    border-radius: 50%;
-    opacity: 0.6;
-    animation: floatParticle 15s infinite linear;
-}
-
-.particle:nth-child(1) {
-    width: 8px;
-    height: 8px;
-    left: 10%;
-    animation-delay: 0s;
-    animation-duration: 12s;
-}
-
-.particle:nth-child(2) {
-    width: 6px;
-    height: 6px;
-    left: 20%;
-    animation-delay: -3s;
-    animation-duration: 18s;
-}
-
-.particle:nth-child(3) {
-    width: 10px;
-    height: 10px;
-    left: 70%;
-    animation-delay: -8s;
-    animation-duration: 15s;
-}
-
-.particle:nth-child(4) {
-    width: 4px;
-    height: 4px;
-    left: 80%;
-    animation-delay: -5s;
-    animation-duration: 20s;
-}
-
-.particle:nth-child(5) {
-    width: 7px;
-    height: 7px;
-    left: 40%;
-    animation-delay: -10s;
-    animation-duration: 14s;
-}
-
-.particle:nth-child(6) {
-    width: 5px;
-    height: 5px;
-    left: 90%;
-    animation-delay: -7s;
-    animation-duration: 16s;
-}
-
-@keyframes floatParticle {
-    0% {
-        transform: translateY(100vh) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.6;
-    }
-    90% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateY(-100px) translateX(50px) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-.minimal-age-verify {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem;
-    text-align: center;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-}
-
-.main-logo {
-    width: 800px;
-    height: 800px;
-    max-width: 70vw;
-    max-height: 50vh;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-    background: #000000;
-}
-
-.age-buttons {
-    display: flex;
-    gap: 3rem;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn {
-    padding: 20px 40px;
-    border: 2px solid #4a7c59;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    background: transparent;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s;
-}
-
-.btn:hover::before {
-    left: 100%;
-}
-
-.btn-yes {
-    background: #4a7c59;
-    color: white;
-    box-shadow: 0 0 20px rgba(74, 124, 89, 0.3);
-    animation: buttonPulse 2s ease-in-out infinite;
-}
-
-@keyframes buttonPulse {
-    0%, 100% { 
-        box-shadow: 0 0 20px rgba(74, 124, 89, 0.3);
-        transform: scale(1);
-    }
-    50% { 
-        box-shadow: 0 0 30px rgba(74, 124, 89, 0.6);
-        transform: scale(1.05);
-    }
-}
-
-.btn-yes:hover {
-    background: #2d4a2b;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 30px rgba(74, 124, 89, 0.5);
-}
-
-.btn-no {
-    background: transparent;
-    color: #4a7c59;
-    box-shadow: 0 0 15px rgba(74, 124, 89, 0.2);
-}
-
-.btn-no:hover {
-    background: #4a7c59;
-    color: white;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(74, 124, 89, 0.4);
-}
-
-/* Main Page */
-.main-page {
-    background: #000000;
-}
-
-.header {
-    background: linear-gradient(135deg, #2d4a2b 0%, #4a7c59 100%);
-    padding: 1rem 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-}
-
-.header-logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-}
-
-.nav-title {
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.hero {
-    background: linear-gradient(135deg, #4a7c59 0%, #2d4a2b 100%);
-    color: white;
-    padding: 4rem 0;
-    text-align: center;
-}
-
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.hero p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.section {
-    padding: 6rem 0;
-    background: transparent;
-    position: relative;
-    scroll-margin-top: 120px;
-}
-
-.section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at center, rgba(74, 124, 89, 0.03) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.section h2 {
-    font-size: 3.5rem;
-    margin-bottom: 4rem;
-    text-align: center;
-    background: linear-gradient(135deg, #4a7c59 0%, #6b9b73 50%, #4a7c59 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 0 30px rgba(74, 124, 89, 0.3);
-    position: relative;
-    z-index: 2;
-}
-
-.education-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-    margin-bottom: 4rem;
-    position: relative;
-    z-index: 2;
-}
-
-.info-card {
-    background: linear-gradient(145deg, rgba(26, 26, 26, 0.9) 0%, rgba(35, 35, 35, 0.8) 100%);
-    padding: 3rem;
-    border-radius: 20px;
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(74, 124, 89, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-}
-
-.info-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(74, 124, 89, 0.05) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.info-card:hover::before {
-    opacity: 1;
-}
-
-.info-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 
-        0 30px 60px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(74, 124, 89, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        0 0 50px rgba(74, 124, 89, 0.2);
-}
-
-.info-card h3 {
-    color: #6b9b73;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    position: relative;
-    z-index: 2;
-}
-
-.info-card p {
-    color: #e0e0e0;
-    line-height: 1.8;
-    font-size: 1.05rem;
-    position: relative;
-    z-index: 2;
-}
-
-.oregon-highlight {
-    background: linear-gradient(135deg, rgba(74, 124, 89, 0.15) 0%, rgba(45, 74, 43, 0.1) 100%);
-    color: white;
-    padding: 4rem;
-    border-radius: 30px;
-    text-align: center;
-    margin: 4rem 0;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(74, 124, 89, 0.3);
-    box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.oregon-highlight::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at center, rgba(74, 124, 89, 0.2) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.oregon-highlight h3 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 2;
-    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.oregon-highlight p {
-    font-size: 1.2rem;
-    opacity: 0.95;
-    line-height: 1.8;
-    position: relative;
-    z-index: 2;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-}
-
-.products-grid-featured {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 4rem;
-    margin-top: 3rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    z-index: 2;
-}
-
-.product-card-featured {
-    background: linear-gradient(145deg, rgba(26, 26, 26, 0.95) 0%, rgba(35, 35, 35, 0.9) 100%);
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(74, 124, 89, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    backdrop-filter: blur(15px);
-}
-
-.product-card-featured::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(74, 124, 89, 0.05) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.product-card-featured:hover::before {
-    opacity: 1;
-}
-
-.product-card-featured:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 
-        0 40px 80px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(74, 124, 89, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        0 0 60px rgba(74, 124, 89, 0.3);
-}
-
-.product-image-real {
-    height: 350px;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.product-image-real::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at center, rgba(74, 124, 89, 0.1) 0%, transparent 70%);
-}
-
-.product-image-real img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4));
-    position: relative;
-    z-index: 2;
-}
-
-.product-info {
-    padding: 2.5rem;
-    position: relative;
-    z-index: 2;
-}
-
-.product-info h4 {
-    color: #6b9b73;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-}
-
-.product-info p {
-    color: #e0e0e0;
-    margin-bottom: 2rem;
-    line-height: 1.8;
-    font-size: 1.05rem;
-}
-
-.price {
-    font-size: 2.2rem;
-    font-weight: bold;
-    background: linear-gradient(135deg, #4a7c59 0%, #6b9b73 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.footer {
-    background: #2d4a2b;
-    color: white;
-    text-align: center;
-    padding: 2rem 0;
-}
-
-.disclaimer {
-    background: #1a2e1a;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-}
-
-/* Mobile Optimizations */
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 1.5rem;
-    }
-    
-    .education-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-    }
-    
-    .products-grid-featured {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    }
-}
-
-@media (max-width: 768px) {
-    /* Enhanced Mobile Layout */
-    html, body {
-        overflow-x: hidden !important;
-    }
-    
-    .container {
-        padding: 0 1rem;
-        max-width: 100%;
-    }
-    
-    /* Mobile Header */
-    .header {
-        padding: 1rem 0 !important;
-    }
-    
-    .nav-container {
-        flex-direction: column !important;
-        gap: 1rem !important;
-        padding: 0 1.5rem !important;
-    }
-    
-    .nav-title {
-        font-size: 1.8rem !important;
-        text-align: center;
-        letter-spacing: 1px !important;
-    }
-    
-    .header-logo {
-        width: 60px !important;
-        height: 60px !important;
-    }
-    
-    /* Mobile Hero */
-    .hero {
-        padding: 3rem 0 !important;
-    }
-    
-    .hero h1 {
-        font-size: 2.2rem !important;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-    }
-    
-    .hero p {
-        font-size: 1.1rem !important;
-        padding: 0 1rem;
-        line-height: 1.6;
-    }
-    
-    /* Mobile Sections */
-    .section {
-        padding: 3rem 0 !important;
-    }
-    
-    .section h2 {
-        font-size: 2.2rem !important;
-        margin-bottom: 2.5rem;
-        line-height: 1.2;
-    }
-    
-    /* Mobile Education Cards */
-    .education-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-        margin-bottom: 2.5rem;
-    }
-    
-    .info-card {
-        padding: 2rem 1.5rem !important;
-        margin: 0 0.5rem;
-        border-radius: 15px;
-    }
-    
-    .info-card h3 {
-        font-size: 1.5rem !important;
-        margin-bottom: 1rem;
-    }
-    
-    .info-card p {
-        font-size: 1rem !important;
-        line-height: 1.6;
-    }
-    
-    /* Mobile Oregon Highlight */
-    .oregon-highlight {
-        padding: 2rem 1.5rem !important;
-        margin: 2.5rem 0.5rem !important;
-        border-radius: 20px;
-    }
-    
-    .oregon-highlight h3 {
-        font-size: 1.8rem !important;
-        margin-bottom: 1rem;
-    }
-    
-    .oregon-highlight p {
-        font-size: 1rem !important;
-        line-height: 1.6;
-    }
-    
-    /* Mobile Products */
-    .products-grid-featured {
-        grid-template-columns: 1fr !important;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-    
-    .product-card-featured {
-        margin: 0 0.5rem !important;
-        border-radius: 20px;
-    }
-    
-    .product-image-real {
-        height: 250px !important;
-        padding: 1.5rem;
-    }
-    
-    .product-info {
-        padding: 1.5rem !important;
-    }
-    
-    .product-info h4 {
-        font-size: 1.5rem !important;
-        margin-bottom: 1rem;
-    }
-    
-    .product-info p {
-        font-size: 1rem !important;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
-    }
-    
-    .price {
-        font-size: 1.8rem !important;
-    }
-    
-    /* Mobile Age Verification */
-    .main-logo {
-        width: 280px !important;
-        height: 280px !important;
-        max-width: 85vw !important;
-        max-height: 35vh !important;
-    }
-    
-    .minimal-age-verify {
-        gap: 2.5rem !important;
-        padding: 0 1rem;
-    }
-    
-    .age-buttons {
-        flex-direction: column !important;
-        gap: 1.2rem !important;
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .btn {
-        padding: 18px 25px !important;
-        font-size: 1rem !important;
-        width: 100%;
-        border-radius: 25px;
-        min-height: 50px;
-    }
-    
-    /* Mobile Footer */
-    .footer {
-        padding: 2rem 0 !important;
-    }
-    
-    .footer p {
-        font-size: 0.9rem;
-        line-height: 1.6;
-        margin-bottom: 0.5rem;
-    }
-    
-    .disclaimer {
-        padding: 1.2rem !important;
-        font-size: 0.85rem !important;
-        line-height: 1.5;
-    }
-}
-
-@media (max-width: 480px) {
-    /* Extra Small Mobile Devices */
-    .container {
-        padding: 0 0.8rem;
-    }
-    
-    .nav-title {
-        font-size: 1.5rem !important;
-    }
-    
-    .hero h1 {
-        font-size: 1.8rem !important;
-    }
-    
-    .hero p {
-        font-size: 1rem !important;
-    }
-    
-    .section h2 {
-        font-size: 1.8rem !important;
-    }
-    
-    .main-logo {
-        width: 240px !important;
-        height: 240px !important;
-        max-width: 90vw !important;
-        max-height: 30vh !important;
-    }
-    
-    .minimal-age-verify {
-        gap: 2rem !important;
-    }
-    
-    .info-card {
-        padding: 1.5rem 1rem !important;
-        margin: 0 0.2rem;
-    }
-    
-    .oregon-highlight {
-        padding: 1.5rem 1rem !important;
-        margin: 2rem 0.2rem !important;
-    }
-    
-    .product-card-featured {
-        margin: 0 0.2rem !important;
-    }
-    
-    .product-info {
-        padding: 1.2rem !important;
-    }
-    
-    .age-buttons {
-        max-width: 280px;
-    }
-    
-    .btn {
-        padding: 15px 20px !important;
-        font-size: 0.95rem !important;
-    }
-    
-    .main-nav {
-        gap: 0.8rem;
-        justify-content: center;
-    }
-    
-    .nav-link {
-        font-size: 0.85rem !important;
-        padding: 6px 12px !important;
-    }
-    
-    .hero-spacer {
-        height: 15px !important;
-    }
-    
-    .section-divider {
-        height: 40px !important;
-    }
-    
-    .wholesale-cta-container {
-        padding: 1.5rem !important;
-    }
-    
-    .wholesale-card {
-        padding: 1.5rem !important;
-        margin: 0 0.2rem;
-    }
-    
-    .wholesale-card h3 {
-        font-size: 1.3rem !important;
-    }
-    
-    .wholesale-cta-container h3 {
-        font-size: 1.6rem !important;
-    }
-}
-
-/* Touch-Friendly Enhancements */
-@media (hover: none) and (pointer: coarse) {
-    /* Mobile touch devices */
-    .btn {
-        min-height: 48px;
-        min-width: 48px;
-    }
-    
-    .product-card-featured:hover {
-        transform: none;
-    }
-    
-    .product-card-featured:active {
-        transform: scale(0.98);
-    }
-    
-    .info-card:hover {
-        transform: none;
-    }
-    
-    .info-card:active {
-        transform: scale(0.98);
-    }
-    
-    /* Reduce sparkle effects for performance */
-    .age-verify-page::before {
-        animation-duration: 6s;
-    }
-    
-    .particle {
-        animation-duration: 20s;
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Green THCa - Premium Oregon Cannabis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Age Verification Page -->
+    <div id="ageVerify" class="page active age-verify-page">
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="minimal-age-verify">
+            <img src="ROUNDLOGO.PNG" alt="Aura Green Logo" class="main-logo" />
+            <div class="age-buttons">
+                <button class="btn btn-yes" onclick="enterSite()">Yes, I'm 21+</button>
+                <button class="btn btn-no" onclick="exitSite()">No, I'm under 21</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Website -->
+    <div id="mainSite" class="page main-page">
+        <header class="header">
+            <div class="nav-container">
+                <img src="ROUNDLOGO.PNG" alt="Aura Green" class="header-logo" />
+                <h1 class="nav-title">Aura Green THCa</h1>
+                <nav class="main-nav">
+                    <a href="#education" class="nav-link">Education</a>
+                    <a href="#products" class="nav-link">Products</a>
+                    <a href="#wholesale" class="nav-link">Wholesale</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="hero-spacer"></div>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Premium Oregon THCa</h1>
+                <p>Experience the finest quality THCa products sourced exclusively from Oregon's premier cannabis cultivators. Unmatched purity, competitive pricing, and exceptional value.</p>
+            </div>
+            <div class="hero-floating-elements">
+                <div class="floating-element element-1"></div>
+                <div class="floating-element element-2"></div>
+                <div class="floating-element element-3"></div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+        </div>
+
+        <section id="education" class="section">
+            <div class="container">
+                <h2>Understanding THCa</h2>
+                <div class="education-grid">
+                    <div class="info-card">
+                        <h3>What is THCa?</h3>
+                        <p>THCa (Tetrahydrocannabinolic acid) is the non-psychoactive precursor to THC found in raw, unheated cannabis. Unlike THC, THCa does not produce intoxicating effects until it's decarboxylated through heat or time.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>The Science Behind THCa</h3>
+                        <p>THCa is the acidic form of THC that exists naturally in fresh cannabis plants. Through a process called decarboxylation, THCa converts to THC when exposed to heat, light, or time, activating its psychoactive properties.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Potential Benefits</h3>
+                        <p>Research suggests THCa may offer unique therapeutic properties including anti-inflammatory, neuroprotective, and anti-emetic effects, making it an area of growing interest in cannabis research.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Premium Oregon Quality</h3>
+                        <p>Oregon's ideal climate and strict regulatory standards produce THCa with exceptional purity levels averaging 95-99%. Our state-certified labs ensure consistent potency testing and zero contaminants in every batch.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Why Oregon is Superior</h3>
+                        <p>Oregon's unique Pacific Northwest climate provides optimal growing conditions with clean mountain water, rich volcanic soil, and perfect temperature ranges. Combined with the state's pioneering cannabis expertise since legalization, Oregon produces the world's most potent and pure THCa.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Legal Considerations</h3>
+                        <p>THCa exists in a unique legal space. While non-psychoactive in its raw form, it's important to understand local and federal regulations regarding THCa products in your area.</p>
+                    </div>
+                </div>
+
+                <div class="oregon-highlight">
+                    <h3>🌲 Oregon's Cannabis Excellence</h3>
+                    <p>Oregon has established itself as the gold standard for cannabis cultivation. Our exclusive partnerships with Oregon's top-tier growers ensure you receive the highest quality THCa products at unbeatable prices. From the pristine growing conditions to the state's rigorous testing standards, Oregon-sourced THCa represents the pinnacle of cannabis quality and safety.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+        </div>
+
+        <section id="products" class="section">
+            <div class="container">
+                <h2>Our Premium Product Line</h2>
+                <div class="products-grid-featured">
+                    <div class="product-card-featured">
+                        <div class="product-image-real">
+                            <img src="TINCTURE.png" alt="THCa Tincture" />
+                        </div>
+                        <div class="product-info">
+                            <h4>Premium THCa Tincture</h4>
+                            <p>Fast-acting, precisely dosed THCa tincture made from Oregon's finest cannabis. Clean extraction process ensures maximum potency and purity.</p>
+                            <div class="price">From $39.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card-featured">
+                        <div class="product-image-real">
+                            <img src="VAPEPEN.png" alt="THCa Vape Pen" />
+                        </div>
+                        <div class="product-info">
+                            <h4>THCa Vape Pen</h4>
+                            <p>Premium disposable vape pen featuring pure THCa oil. Smooth, clean vapor with consistent dosing and exceptional flavor profiles.</p>
+                            <div class="price">From $34.99</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+        </div>
+
+        <section id="wholesale" class="section wholesale-section">
+            <div class="container">
+                <h2>Wholesale Program</h2>
+                <div class="wholesale-content">
+                    <div class="wholesale-info">
+                        <div class="wholesale-card">
+                            <h3>🏢 Bulk Pricing Available</h3>
+                            <p>Partner with Aura Green for exclusive wholesale pricing on premium Oregon THCa products. Perfect for dispensaries, retailers, and distribution partners.</p>
+                        </div>
+                        <div class="wholesale-card">
+                            <h3>🎯 Referral Discount Program</h3>
+                            <p>Refer new wholesale clients and earn significant discounts on your next orders. Our referral program rewards loyalty with substantial savings.</p>
+                        </div>
+                        <div class="wholesale-card">
+                            <h3>📦 Volume Discounts</h3>
+                            <p>Competitive pricing tiers based on order volume. The more you order, the more you save. Custom packaging and white-label options available.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="wholesale-cta-section">
+                        <div class="wholesale-cta-container">
+                            <h3>Ready to Partner With Us?</h3>
+                            <p class="cta-subtitle">Get exclusive wholesale pricing and learn about our referral discount program that rewards you for bringing in new business partners.</p>
+                            
+                            <div class="wholesale-benefits">
+                                <div class="benefit-item">✅ Exclusive wholesale pricing</div>
+                                <div class="benefit-item">✅ Referral discount rewards</div>
+                                <div class="benefit-item">✅ Volume-based savings</div>
+                                <div class="benefit-item">✅ Custom packaging options</div>
+                                <div class="benefit-item">✅ White-label solutions</div>
+                                <div class="benefit-item">✅ Dedicated account support</div>
+                            </div>
+                            
+                            <div class="contact-wholesale">
+                                <p class="contact-text">Email us for detailed wholesale pricing and referral program information:</p>
+                                <a href="mailto:pengusaurusrex@gmail.com?subject=Wholesale%20Inquiry%20-%20Aura%20Green%20THCa&body=Hello%2C%0A%0AI%27m%20interested%20in%20your%20wholesale%20program%20and%20would%20like%20to%20learn%20more%20about%3A%0A%0A-%20Wholesale%20pricing%20for%20THCa%20products%0A-%20Referral%20discount%20program%20details%0A-%20Volume%20discounts%0A-%20Custom%20packaging%20options%0A%0ACompany%2FBusiness%3A%20%0AContact%20Person%3A%20%0APhone%3A%20%0AEstimated%20Monthly%20Volume%3A%20%0A%0AThank%20you!" class="wholesale-email-btn">
+                                    pengusaurusrex@gmail.com
+                                </a>
+                                <p class="response-time">We respond within 24 hours with detailed pricing and program information.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact" class="footer">
+            <div class="container">
+                <p>&copy; 2024 Aura Green THCa. Premium Oregon Cannabis Products.</p>
+                <p>Contact: pengusaurusrex@gmail.com</p>
+            </div>
+        </footer>
+
+        <div class="disclaimer">
+            <p>This product has not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease. Keep out of reach of children and pets. Use responsibly.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
