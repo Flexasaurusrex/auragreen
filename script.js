@@ -39,6 +39,26 @@ function exitSite() {
     window.location.href = 'https://www.google.com';
 }
 
+// Simple scroll function that works immediately
+function scrollToSection(sectionId) {
+    console.log('Scrolling to section:', sectionId);
+    const targetSection = document.getElementById(sectionId);
+    
+    if (targetSection) {
+        const headerHeight = 120;
+        const targetPosition = targetSection.offsetTop - headerHeight;
+        
+        console.log('Target found, scrolling to:', targetPosition);
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    } else {
+        console.error('Section not found:', sectionId);
+    }
+}
+
 // Enhanced smooth scroll navigation
 function initSmoothNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
@@ -269,6 +289,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileNavigation();
     initEmailLinks();
     optimizeAnimations();
+    
+    // Force initialize navigation even on main page
+    setTimeout(() => {
+        initSmoothNavigation();
+        console.log('Navigation initialized');
+    }, 500);
     
     // Add loading animation completion
     setTimeout(() => {
