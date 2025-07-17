@@ -1,0 +1,23 @@
+{
+  "name": "aura-green-thca-website",
+  "version": "1.0.0",
+  "description": "Professional cannabis website for Aura Green THCa",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": [
+    "cannabis",
+    "thca",
+    "oregon",
+    "website",
+    "static"
+  ],
+  "author": "Aura Green",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "your-github-repo-url"
+  }
+}
