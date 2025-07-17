@@ -38,18 +38,18 @@
                     </div>
                 </div>
                 <nav class="main-nav">
-                    <a href="#education" class="nav-link" onclick="scrollToSection('education')">
+                    <button onclick="document.getElementById('education').scrollIntoView({behavior: 'smooth', block: 'start'})" class="nav-link">
                         <span class="nav-text">Education</span>
-                    </a>
-                    <a href="#products" class="nav-link" onclick="scrollToSection('products')">
+                    </button>
+                    <button onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth', block: 'start'})" class="nav-link">
                         <span class="nav-text">Products</span>
-                    </a>
-                    <a href="#wholesale" class="nav-link" onclick="scrollToSection('wholesale')">
+                    </button>
+                    <button onclick="document.getElementById('wholesale').scrollIntoView({behavior: 'smooth', block: 'start'})" class="nav-link">
                         <span class="nav-text">Wholesale</span>
-                    </a>
-                    <a href="#contact" class="nav-link" onclick="scrollToSection('contact')">
+                    </button>
+                    <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth', block: 'start'})" class="nav-link">
                         <span class="nav-text">Contact</span>
-                    </a>
+                    </button>
                 </nav>
             </div>
         </header>
@@ -198,9 +198,9 @@
                             <div class="wholesale-contact">
                                 <h4>Ready to Partner?</h4>
                                 <p>Get detailed pricing and referral program information</p>
-                                <a href="mailto:pengusaurusrex@gmail.com?subject=Wholesale%20Inquiry%20-%20Aura%20Green%20THCa" class="wholesale-email-btn" onclick="window.location.href='mailto:pengusaurusrex@gmail.com?subject=Wholesale%20Inquiry%20-%20Aura%20Green%20THCa'; return false;">
+                                <button onclick="window.open('mailto:pengusaurusrex@gmail.com?subject=Wholesale%20Inquiry%20-%20Aura%20Green%20THCa', '_blank')" class="wholesale-email-btn">
                                     Contact Us
-                                </a>
+                                </button>
                                 <p class="response-note">24-hour response guarantee</p>
                             </div>
                         </div>
@@ -235,6 +235,31 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function enterSite() {
+            console.log('Enter site function called');
+            
+            const ageVerifyPage = document.getElementById('ageVerify');
+            const mainSitePage = document.getElementById('mainSite');
+            
+            if (ageVerifyPage && mainSitePage) {
+                ageVerifyPage.style.display = 'none';
+                ageVerifyPage.classList.remove('active');
+                
+                mainSitePage.style.display = 'block';
+                mainSitePage.classList.add('active');
+                
+                document.body.style.overflow = 'auto';
+                document.documentElement.style.overflow = 'auto';
+                
+                console.log('Page switching completed successfully');
+            }
+        }
+
+        function exitSite() {
+            alert('You must be 21 or older to access this site.');
+            window.location.href = 'https://www.google.com';
+        }
+    </script>
 </body>
 </html>
