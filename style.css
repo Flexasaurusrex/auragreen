@@ -811,6 +811,19 @@ html, body {
         padding: 15px 20px !important;
         font-size: 0.95rem !important;
     }
+    
+    .wholesale-form-container {
+        padding: 1.5rem !important;
+    }
+    
+    .wholesale-card {
+        padding: 1.5rem !important;
+        margin: 0 0.2rem;
+    }
+    
+    .wholesale-card h3 {
+        font-size: 1.3rem !important;
+    }
 }
 
 /* Touch-Friendly Enhancements */
