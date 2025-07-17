@@ -16,8 +16,9 @@ function enterSite() {
         mainSitePage.style.display = 'block';
         mainSitePage.classList.add('active');
         
-        // Store verification in session
-        sessionStorage.setItem('ageVerified', 'true');
+        // Remove fixed positioning to allow scrolling
+        document.body.style.overflow = 'auto';
+        
         console.log('Page switching completed successfully');
     } else {
         console.error('Could not find required page elements');
