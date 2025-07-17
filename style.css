@@ -356,6 +356,29 @@ html, body {
     height: 120px;
 }
 
+@media (max-width: 768px) {
+    .hero-spacer {
+        height: 140px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-spacer {
+        height: 160px !important;
+    }
+    
+    .hero {
+        padding: 3rem 0 !important;
+        margin-top: 2.5rem !important;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        margin-top: 1.5rem !important;
+        padding-top: 1rem !important;
+    }
+}
+
 .hero {
     background: linear-gradient(135deg, rgba(74, 124, 89, 0.1) 0%, rgba(45, 74, 43, 0.05) 100%);
     padding: 5rem 0;
@@ -1083,6 +1106,7 @@ html, body {
     
     .hero-title {
         font-size: 2.5rem;
+        margin-top: 1rem !important;
     }
     
     .hero-subtitle {
