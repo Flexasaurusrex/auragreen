@@ -288,127 +288,254 @@ html, body {
 }
 
 .section {
-    padding: 4rem 0;
-    background: #000000;
+    padding: 6rem 0;
+    background: transparent;
+    position: relative;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(74, 124, 89, 0.03) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 3.5rem;
+    margin-bottom: 4rem;
     text-align: center;
-    color: #4a7c59;
+    background: linear-gradient(135deg, #4a7c59 0%, #6b9b73 50%, #4a7c59 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(74, 124, 89, 0.3);
+    position: relative;
+    z-index: 2;
 }
 
 .education-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
 }
 
 .info-card {
-    background: #1a1a1a;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-    border: 2px solid #4a7c59;
-    transition: transform 0.3s ease;
+    background: linear-gradient(145deg, rgba(26, 26, 26, 0.9) 0%, rgba(35, 35, 35, 0.8) 100%);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(74, 124, 89, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(74, 124, 89, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.info-card:hover::before {
+    opacity: 1;
 }
 
 .info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(74, 124, 89, 0.3);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(74, 124, 89, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 50px rgba(74, 124, 89, 0.2);
 }
 
 .info-card h3 {
-    color: #4a7c59;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    color: #6b9b73;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
 }
 
 .info-card p {
-    color: #cccccc;
-    line-height: 1.6;
+    color: #e0e0e0;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    position: relative;
+    z-index: 2;
 }
 
 .oregon-highlight {
-    background: linear-gradient(135deg, #4a7c59 0%, #2d4a2b 100%);
+    background: linear-gradient(135deg, rgba(74, 124, 89, 0.15) 0%, rgba(45, 74, 43, 0.1) 100%);
     color: white;
-    padding: 3rem;
-    border-radius: 20px;
+    padding: 4rem;
+    border-radius: 30px;
     text-align: center;
-    margin: 3rem 0;
+    margin: 4rem 0;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(74, 124, 89, 0.3);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.oregon-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(74, 124, 89, 0.2) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .oregon-highlight h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .oregon-highlight p {
-    font-size: 1.1rem;
-    opacity: 0.9;
+    font-size: 1.2rem;
+    opacity: 0.95;
+    line-height: 1.8;
+    position: relative;
+    z-index: 2;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .products-grid-featured {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 3rem;
-    margin-top: 2rem;
-    max-width: 1000px;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 4rem;
+    margin-top: 3rem;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    z-index: 2;
 }
 
 .product-card-featured {
-    background: #1a1a1a;
-    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(26, 26, 26, 0.95) 0%, rgba(35, 35, 35, 0.9) 100%);
+    border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
-    border: 2px solid #4a7c59;
-    transition: transform 0.3s ease;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(74, 124, 89, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    backdrop-filter: blur(15px);
+}
+
+.product-card-featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(74, 124, 89, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.product-card-featured:hover::before {
+    opacity: 1;
 }
 
 .product-card-featured:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(74, 124, 89, 0.4);
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(74, 124, 89, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 60px rgba(74, 124, 89, 0.3);
 }
 
 .product-image-real {
-    height: 300px;
-    background: #000000;
+    height: 350px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image-real::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(74, 124, 89, 0.1) 0%, transparent 70%);
 }
 
 .product-image-real img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4));
+    position: relative;
+    z-index: 2;
 }
 
 .product-info {
-    padding: 2rem;
+    padding: 2.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .product-info h4 {
-    color: #4a7c59;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    color: #6b9b73;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
 }
 
 .product-info p {
-    color: #cccccc;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
 }
 
 .price {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: bold;
-    color: #4a7c59;
+    background: linear-gradient(135deg, #4a7c59 0%, #6b9b73 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .footer {
@@ -428,7 +555,29 @@ html, body {
 
 @media (max-width: 768px) {
     .hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .hero {
+        padding: 4rem 0;
+    }
+    
+    .section {
+        padding: 4rem 0;
+    }
+    
+    .section h2 {
         font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+    
+    .education-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .info-card {
+        padding: 2rem;
     }
     
     .main-logo {
@@ -459,15 +608,28 @@ html, body {
     
     .products-grid-featured {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
     }
     
     .product-card-featured {
         margin: 0 1rem;
     }
+    
+    .oregon-highlight {
+        padding: 2.5rem;
+        margin: 2.5rem 0;
+    }
 }
 
 @media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .section h2 {
+        font-size: 2rem;
+    }
+    
     .main-logo {
         width: 500px;
         height: 500px;
@@ -485,6 +647,14 @@ html, body {
     
     .products-grid-featured {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
+    }
+    
+    .info-card {
+        padding: 1.5rem;
+    }
+    
+    .oregon-highlight {
+        padding: 2rem;
     }
 }
