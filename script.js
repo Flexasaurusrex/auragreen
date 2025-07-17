@@ -26,6 +26,8 @@ function enterSite() {
         setTimeout(() => {
             initPageEffects();
             initSmoothNavigation();
+            initEmailLinks();
+            console.log('All functionality initialized after page switch');
         }, 100);
     } else {
         console.error('Could not find required page elements');
