@@ -343,8 +343,17 @@
         // Initialize Stripe with your LIVE publishable key
         const stripe = Stripe('pk_live_51RmITSKLAguz0uyTZjWPgye3TwVbfmNlSMqgSAvcMvi8yOxV6K1ByVeNU4fRBeEvRNTpJL6ce32QosVkAiK9cIXP00c87rcaHH');
         
-        // Shopping cart state
+        // Shopping cart state - explicitly initialize as empty array
         let cart = [];
+        
+        // Debug function to check cart state
+        function debugCart() {
+            console.log('=== CART DEBUG ===');
+            console.log('Cart array:', cart);
+            console.log('Cart length:', cart.length);
+            console.log('Cart items:', cart.map(item => `${item.name} (${item.id}) x${item.quantity}`));
+            console.log('==================');
+        }
         
         function enterSite() {
             console.log('Enter site function called');
@@ -363,6 +372,11 @@
                 document.documentElement.style.overflow = 'auto';
                 
                 console.log('Page switching completed successfully');
+                
+                // Initialize cart UI
+                setTimeout(() => {
+                    updateCartUI();
+                }, 100);
             }
         }
 
@@ -373,21 +387,29 @@
         
         // Cart functionality
         function addToCart(productId, productName, priceInCents, image) {
-            // Check if item already exists in cart
-            const existingItem = cart.find(item => item.id === productId);
+            console.log('Adding to cart:', productId, productName, priceInCents, image);
             
-            if (existingItem) {
-                existingItem.quantity += 1;
+            // Check if item already exists in cart
+            const existingItemIndex = cart.findIndex(item => item.id === productId);
+            
+            if (existingItemIndex > -1) {
+                // Item exists, increase quantity
+                cart[existingItemIndex].quantity += 1;
+                console.log('Updated existing item quantity:', cart[existingItemIndex]);
             } else {
-                cart.push({
+                // New item, add to cart
+                const newItem = {
                     id: productId,
                     name: productName,
                     price: priceInCents,
                     image: image,
                     quantity: 1
-                });
+                };
+                cart.push(newItem);
+                console.log('Added new item:', newItem);
             }
             
+            console.log('Current cart:', cart);
             updateCartUI();
             
             // Show success message
@@ -465,6 +487,8 @@
             } else {
                 cartSidebar.classList.add('open');
                 cartOverlay.classList.add('open');
+                // Debug cart when opening
+                debugCart();
             }
         }
         
