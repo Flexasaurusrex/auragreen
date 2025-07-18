@@ -683,7 +683,7 @@ html, body {
 /* Product Cards */
 .products-grid-featured {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 4rem;
     margin-top: 2rem;
     position: relative;
@@ -1052,6 +1052,11 @@ html, body {
     .wholesale-main-card {
         padding: 3rem;
     }
+    
+    .products-grid-featured {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 3rem;
+    }
 }
 
 @media (max-width: 968px) {
@@ -1069,7 +1074,7 @@ html, body {
     }
     
     .products-grid-featured {
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 3rem;
     }
 }
