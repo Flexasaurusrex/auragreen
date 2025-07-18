@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aura Green THCa - Premium Oregon Cannabis</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <!-- Age Verification Page -->
@@ -84,17 +85,61 @@
                         <div class="product-info">
                             <h4>Premium THCa Tincture</h4>
                             <p>Fast-acting, precisely dosed THCa tincture made from Oregon's finest cannabis. Clean extraction process ensures maximum potency and purity.</p>
-                            <div class="price">From $39.99</div>
+                            <div class="product-pricing">
+                                <div class="price">$39.99</div>
+                                <button class="buy-button" onclick="buyProduct('tincture', 'Premium THCa Tincture', 3999)">
+                                    Add to Cart
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="product-card-featured">
                         <div class="product-image-real">
-                            <img src="VAPEPEN.png" alt="THCa Vape Pen" />
+                            <img src="FLOWER.PNG" alt="Premium THCa Flower - 1/8th" />
                         </div>
                         <div class="product-info">
-                            <h4>THCa Vape Pen</h4>
-                            <p>Premium disposable vape pen featuring pure THCa oil. Smooth, clean vapor with consistent dosing and exceptional flavor profiles.</p>
-                            <div class="price">From $34.99</div>
+                            <h4>Premium THCa Flower - 1/8th</h4>
+                            <p>Chef's choice rotating Oregon-grown strains featuring exceptional terpene profiles. Hand-selected premium flower from our exclusive cultivator network. Always fresh, always potent.</p>
+                            <div class="product-pricing">
+                                <div class="price">$35.00</div>
+                                <div class="weight-label">3.5 grams</div>
+                                <button class="buy-button" onclick="buyProduct('flower-eighth', 'Premium THCa Flower - 1/8th', 3500)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-featured">
+                        <div class="product-image-real">
+                            <img src="FLOWER2.PNG" alt="Premium THCa Flower - 1/2oz" />
+                        </div>
+                        <div class="product-info">
+                            <h4>Premium THCa Flower - 1/2oz</h4>
+                            <p>Chef's choice rotating Oregon-grown strains featuring exceptional terpene profiles. Hand-selected premium flower from our exclusive cultivator network. Better value per gram.</p>
+                            <div class="product-pricing">
+                                <div class="price">$125.00</div>
+                                <div class="weight-label">14 grams</div>
+                                <button class="buy-button" onclick="buyProduct('flower-half', 'Premium THCa Flower - 1/2oz', 12500)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-featured popular-product">
+                        <div class="product-image-real">
+                            <img src="FLOWEROZ.PNG" alt="Premium THCa Flower - 1oz" />
+                        </div>
+                        <div class="product-info">
+                            <h4>Premium THCa Flower - 1oz</h4>
+                            <p>Chef's choice rotating Oregon-grown strains featuring exceptional terpene profiles. Hand-selected premium flower from our exclusive cultivator network. Best value option!</p>
+                            <div class="product-pricing">
+                                <div class="price">$225.00</div>
+                                <div class="weight-label">28 grams</div>
+                                <div class="savings-badge">Save $55!</div>
+                                <button class="buy-button" onclick="buyProduct('flower-oz', 'Premium THCa Flower - 1oz', 22500)">
+                                    Add to Cart
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="product-card-featured">
@@ -104,7 +149,12 @@
                         <div class="product-info">
                             <h4>THCa Diamonds</h4>
                             <p>Pure crystalline THCa extracted from premium Oregon flower. These pristine diamonds offer unmatched potency and clarity, perfect for dabbing or vaporizing. 2 grams of lab-tested purity.</p>
-                            <div class="price">$20.00</div>
+                            <div class="product-pricing">
+                                <div class="price">$20.00</div>
+                                <button class="buy-button" onclick="buyProduct('diamonds', 'THCa Diamonds (2g)', 2000)">
+                                    Add to Cart
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="product-card-featured">
@@ -114,7 +164,12 @@
                         <div class="product-info">
                             <h4>THCa Diamond Sauce</h4>
                             <p>Premium THCa diamonds suspended in rich, terpene-heavy sauce. This Oregon craft concentrate delivers exceptional flavor and potency with every dab. Full-spectrum experience in 2 grams.</p>
-                            <div class="price">$40.00</div>
+                            <div class="product-pricing">
+                                <div class="price">$40.00</div>
+                                <button class="buy-button" onclick="buyProduct('sauce', 'THCa Diamond Sauce (2g)', 4000)">
+                                    Add to Cart
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -256,6 +311,9 @@
     </div>
 
     <script>
+        // Initialize Stripe with your LIVE publishable key
+        const stripe = Stripe('pk_live_51RmITSKLAguz0uyTZjWPgye3TwVbfmNlSMqgSAvcMvi8yOxV6K1ByVeNU4fRBeEvRNTpJL6ce32QosVkAiK9cIXP00c87rcaHH');
+        
         function enterSite() {
             console.log('Enter site function called');
             
@@ -279,6 +337,41 @@
         function exitSite() {
             alert('You must be 21 or older to access this site.');
             window.location.href = 'https://www.google.com';
+        }
+        
+        // Stripe Checkout Function
+        function buyProduct(productId, productName, priceInCents) {
+            // For now, this will redirect to a simple checkout
+            // You'll replace these with your actual Stripe Price IDs from your dashboard
+            
+            const priceIds = {
+                'tincture': 'price_1RmIYEQQhDqUBjprnDPlWEJ4',
+                'flower-eighth': 'price_1RmIfVQQhDqUBjpr1Nuo36mw',
+                'flower-half': 'price_1RmIpQQQhDqUBjpr8ME2cGfR', 
+                'flower-oz': 'price_1RmJ6BQQhDqUBjprBMAZKX3X',
+                'diamonds': 'price_1RmJ6wQQhDqUBjprafB2q0gl',
+                'sauce': 'price_1RmJ7SQQhDqUBjprhBSfqJlp'
+            };
+            
+            // Redirect to Stripe Checkout
+            stripe.redirectToCheckout({
+                lineItems: [{
+                    price: priceIds[productId],
+                    quantity: 1,
+                }],
+                mode: 'payment',
+                successUrl: window.location.origin + '/success.html',
+                cancelUrl: window.location.origin,
+                customerEmail: null, // Customer will enter email
+                billingAddressCollection: 'required',
+                shippingAddressCollection: {
+                    allowedCountries: ['US'],
+                },
+            }).then(function (result) {
+                if (result.error) {
+                    alert('Error: ' + result.error.message);
+                }
+            });
         }
     </script>
 </body>
