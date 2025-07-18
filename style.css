@@ -683,7 +683,7 @@ html, body {
 /* Product Cards */
 .products-grid-featured {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 4rem;
     margin-top: 2rem;
     position: relative;
@@ -778,6 +778,13 @@ html, body {
     font-size: 1.1rem;
 }
 
+.product-pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
 .price {
     font-size: 2.5rem;
     font-weight: bold;
@@ -785,6 +792,91 @@ html, body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.buy-button {
+    background: linear-gradient(135deg, #4a7c59 0%, #6b9b73 100%);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 30px rgba(74, 124, 89, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.buy-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.buy-button:hover::before {
+    left: 100%;
+}
+
+.buy-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(74, 124, 89, 0.5);
+    background: linear-gradient(135deg, #6b9b73 0%, #4a7c59 100%);
+}
+
+.buy-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(74, 124, 89, 0.4);
+}
+
+/* Product weight and savings labels */
+.weight-label {
+    color: #6b9b73;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.savings-badge {
+    background: linear-gradient(135deg, #4a7c59 0%, #6b9b73 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.popular-product {
+    position: relative;
+}
+
+.popular-product::before {
+    content: '🔥 BEST VALUE';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #4a7c59 0%, #6b9b73 100%);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(74, 124, 89, 0.3);
 }
 
 /* Premium Wholesale Section */
@@ -1054,7 +1146,7 @@ html, body {
     }
     
     .products-grid-featured {
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 3rem;
     }
 }
