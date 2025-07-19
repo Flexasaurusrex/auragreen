@@ -343,6 +343,31 @@
         // Shopping cart state - explicitly initialize as empty array
         let cart = [];
         
+        // Check if user is returning from Stripe or has been here before
+        function checkPageEntry() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const isFromStripe = urlParams.has('from_stripe') || 
+                               document.referrer.includes('checkout.stripe.com') ||
+                               document.referrer.includes('js.stripe.com');
+            
+            // Check if returning from successful purchase
+            const isFromSuccess = document.referrer.includes('success.html') || urlParams.has('purchase_complete');
+            
+            // Clear cart if returning from successful purchase
+            if (isFromSuccess) {
+                console.log('Clearing cart - successful purchase completed');
+                cart = [];
+            }
+            
+            // Auto-enter site if returning from Stripe or if URL suggests they should bypass age verify
+            if (isFromStripe || urlParams.has('bypass_age') || window.location.hash === '#main') {
+                console.log('Auto-entering site - returning user or from checkout');
+                setTimeout(() => {
+                    enterSite();
+                }, 100);
+            }
+        }
+        
         // Debug function to check cart state
         function debugCart() {
             console.log('=== CART DEBUG ===');
@@ -351,6 +376,9 @@
             console.log('Cart items:', cart.map(item => `${item.name} (${item.id}) x${item.quantity}`));
             console.log('==================');
         }
+        
+        // Check page entry on load
+        document.addEventListener('DOMContentLoaded', checkPageEntry);
         
         function enterSite() {
             console.log('Enter site function called');
@@ -560,12 +588,12 @@
             
             console.log('Checkout line items:', lineItems);
             
-            // Redirect to Stripe Checkout
+            // Redirect to Stripe Checkout with return URLs that bypass age verification
             stripe.redirectToCheckout({
                 lineItems: lineItems,
                 mode: 'payment',
-                successUrl: window.location.origin + '/success.html',
-                cancelUrl: window.location.origin,
+                successUrl: window.location.origin + '/success.html?purchase_complete=true',
+                cancelUrl: window.location.origin + '?from_stripe=true&bypass_age=true#main',
                 billingAddressCollection: 'required',
                 shippingAddressCollection: {
                     allowedCountries: ['US'],
