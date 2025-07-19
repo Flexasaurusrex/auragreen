@@ -346,11 +346,14 @@
         // Check if user is returning from Stripe or has been here before
         function checkPageEntry() {
             const urlParams = new URLSearchParams(window.location.search);
-            const isFromStripe = urlParams.has('from_stripe') || 
-                               document.referrer.includes('checkout.stripe.com') ||
-                               document.referrer.includes('js.stripe.com');
             
-            // Check if returning from successful purchase
+            // Only bypass age verification for specific return scenarios
+            const isFromStripe = document.referrer.includes('checkout.stripe.com') || 
+                               document.referrer.includes('js.stripe.com');
+            const hasStripeParams = urlParams.has('from_stripe') || urlParams.has('purchase_complete');
+            const hasExplicitBypass = urlParams.has('bypass_age');
+            
+            // Check if returning from successful purchase (clear cart)
             const isFromSuccess = document.referrer.includes('success.html') || urlParams.has('purchase_complete');
             
             // Clear cart if returning from successful purchase
@@ -359,12 +362,15 @@
                 cart = [];
             }
             
-            // Auto-enter site if returning from Stripe or if URL suggests they should bypass age verify
-            if (isFromStripe || urlParams.has('bypass_age') || window.location.hash === '#main') {
-                console.log('Auto-entering site - returning user or from checkout');
+            // Only auto-enter site if there are explicit indicators of returning from checkout
+            if ((isFromStripe || hasStripeParams) && hasExplicitBypass) {
+                console.log('Auto-entering site - returning from Stripe checkout');
                 setTimeout(() => {
                     enterSite();
                 }, 100);
+            } else {
+                console.log('Normal page load - showing age verification');
+                // Normal page load - show age verification as usual
             }
         }
         
