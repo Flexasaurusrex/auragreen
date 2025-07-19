@@ -594,12 +594,12 @@
             
             console.log('Checkout line items:', lineItems);
             
-            // Redirect to Stripe Checkout with return URLs that bypass age verification
+            // Redirect to Stripe Checkout - back to original URLs
             stripe.redirectToCheckout({
                 lineItems: lineItems,
                 mode: 'payment',
-                successUrl: window.location.origin + '/success.html?purchase_complete=true',
-                cancelUrl: window.location.origin + '?from_stripe=true&bypass_age=true#main',
+                successUrl: window.location.origin + '/success.html',
+                cancelUrl: window.location.origin,
                 billingAddressCollection: 'required',
                 shippingAddressCollection: {
                     allowedCountries: ['US'],
