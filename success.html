@@ -37,8 +37,8 @@
                     </div>
                     
                     <div class="success-actions">
-                        <a href="/" class="continue-btn">Continue Shopping</a>
-                        <a href="/#products" class="products-btn">View All Products</a>
+                        <a href="/?from_stripe=true&bypass_age=true&purchase_complete=true#main" class="continue-btn">Continue Shopping</a>
+                        <a href="/?from_stripe=true&bypass_age=true&purchase_complete=true#products" class="products-btn">View All Products</a>
                     </div>
                 </div>
             </div>
@@ -199,5 +199,15 @@
             }
         }
     </style>
+
+    <script>
+        // Auto-redirect to main site after 15 seconds if user doesn't click
+        setTimeout(() => {
+            window.location.href = '/?from_stripe=true&bypass_age=true&purchase_complete=true#main';
+        }, 15000);
+        
+        // Log successful purchase for debugging
+        console.log('Purchase completed successfully - cart will be cleared on return to main site');
+    </script>
 </body>
 </html>
