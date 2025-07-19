@@ -879,6 +879,185 @@ html, body {
     box-shadow: 0 4px 12px rgba(74, 124, 89, 0.3);
 }
 
+/* Aura Green Girls Section */
+.aura-girls-section {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.8) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.aura-girls-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(74, 124, 89, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(107, 155, 115, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.aura-girls-tagline {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #e0e0e0;
+    margin-bottom: 4rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.aura-girls-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-bottom: 5rem;
+}
+
+.aura-girl-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.aura-girl-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(74, 124, 89, 0.2);
+}
+
+.aura-girl-image {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+}
+
+.aura-girl-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.aura-girl-card:hover .aura-girl-image img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.8) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.aura-girl-card:hover .image-overlay {
+    opacity: 1;
+}
+
+.overlay-content h4 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.overlay-content p {
+    color: #e0e0e0;
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.aura-girls-info {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 3rem;
+    position: relative;
+}
+
+.event-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.event-feature {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.event-feature .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.event-feature h4 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.event-feature p {
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.event-booking {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(74, 124, 89, 0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(74, 124, 89, 0.2);
+}
+
+.event-booking h3 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.event-booking p {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.event-booking-btn {
+    background: linear-gradient(135deg, #4a7c59 0%, #6b9b73 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 25px rgba(74, 124, 89, 0.3);
+}
+
+.event-booking-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(74, 124, 89, 0.5);
+    background: linear-gradient(135deg, #5a8c69 0%, #7bab83 100%);
+}
+
 /* Shopping Cart Styles */
 .cart-button {
     background: linear-gradient(135deg, #4a7c59 0%, #6b9b73 100%);
@@ -1479,6 +1658,11 @@ html, body {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 3rem;
     }
+    
+    .aura-girls-gallery {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 @media (max-width: 968px) {
@@ -1498,6 +1682,11 @@ html, body {
     .products-grid-featured {
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 3rem;
+    }
+    
+    .aura-girls-gallery {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
@@ -1625,6 +1814,29 @@ html, body {
         font-size: 2rem;
     }
     
+    .aura-girls-gallery {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .aura-girls-tagline {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .aura-girls-info {
+        padding: 2rem;
+    }
+    
+    .event-features {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .event-booking {
+        padding: 1.5rem;
+    }
+    
     .wholesale-main-card {
         padding: 3rem 2rem;
         border-radius: 30px;
@@ -1720,6 +1932,14 @@ html, body {
         padding: 1.5rem;
     }
     
+    .aura-girls-tagline {
+        font-size: 1.1rem;
+    }
+    
+    .aura-girls-info {
+        padding: 1.5rem;
+    }
+    
     .main-logo {
         width: 240px !important;
         height: 240px !important;
@@ -1763,6 +1983,14 @@ html, body {
     }
     
     .info-card:active {
+        transform: scale(0.98);
+    }
+    
+    .aura-girl-card:hover {
+        transform: none;
+    }
+    
+    .aura-girl-card:active {
         transform: scale(0.98);
     }
 }
